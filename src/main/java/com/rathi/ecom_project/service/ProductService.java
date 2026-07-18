@@ -1,5 +1,6 @@
 package com.rathi.ecom_project.service;
 
+import com.rathi.ecom_project.exception.ProductNotFoundException;
 import com.rathi.ecom_project.model.Product;
 import com.rathi.ecom_project.repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,11 @@ public class ProductService {
     }
 
     public Product getProductById(int id) {
-        return repo.findById(id).orElse(null);
+        return repo.findById(id)
+                .orElseThrow(() ->
+                new ProductNotFoundException(
+                        "Product with id " + id + " not found"
+                ));
     }
 
     public Product addProduct(Product product, MultipartFile imageFile) throws IOException {
@@ -33,11 +38,12 @@ public class ProductService {
 
     public Product updateProduct(int id, Product product, MultipartFile imageFile) throws IOException {
 
-        Product existing = repo.findById(id).orElse(null);
+        Product existing = repo.findById(id)
+                .orElseThrow(() ->
+                        new ProductNotFoundException(
+                                "Product with id " + id + " not found"
+                        ));
 
-        if (existing == null) {
-            return null;
-        }
 
         existing.setName(product.getName());
         existing.setDescription(product.getDescription());
@@ -58,7 +64,13 @@ public class ProductService {
     }
 
     public void deleteProduct(int id){
-         repo.deleteById(id);
+        Product product = repo.findById(id)
+                .orElseThrow(() ->
+                        new ProductNotFoundException(
+                                "Product with id " + id + " not found"
+                        ));
+
+        repo.delete(product);
     }
 
     public List<Product> searchProducts(String keyword){
