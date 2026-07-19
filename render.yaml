@@ -2,6 +2,6 @@ services:
   - type: web
     name: eComerce_Backend
     runtime: java
-    plan: free
+    plan: fre
     buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/*.jar
