@@ -40,6 +40,7 @@ public class SecurityConfig {
                                 "/auth/register",
                                 "/auth/login"
                         ).permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/product/*/image").permitAll()
 
                         // Product APIs
                         .requestMatchers(HttpMethod.GET, "/api/products/**")
