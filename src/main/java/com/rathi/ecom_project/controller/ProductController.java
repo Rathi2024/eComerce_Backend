@@ -92,7 +92,7 @@ public class ProductController {
     public ResponseEntity<String> updateProduct(
             @PathVariable int id,
             @RequestPart Product product,
-            @RequestPart MultipartFile imageFile) {
+            @RequestPart(required = false) MultipartFile imageFile) {
 
         try {
             service.updateProduct(id, product, imageFile);
