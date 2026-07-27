@@ -1,6 +1,7 @@
 package com.rathi.ecom_project.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +33,7 @@ public class Product {
     private String imageName;
     private String imageType;
     @Lob
+    @JsonIgnore
     private byte[] imageData;
 
 }

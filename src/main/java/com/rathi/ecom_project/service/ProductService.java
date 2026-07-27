@@ -6,6 +6,7 @@ import com.rathi.ecom_project.repo.ProductRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.List;
@@ -76,6 +77,7 @@ public class ProductService {
         productRepo.delete(product);
     }
 
+    @Transactional(readOnly = true)
     public List<Product> searchProducts(String keyword) {
         return productRepo.searchProducts(keyword);
     }
