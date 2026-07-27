@@ -121,6 +121,8 @@ public class ProductController {
     @GetMapping("/products/search")
     public ResponseEntity<List<Product>> searchProducts(@RequestParam String keyword) {
 
+        System.out.println("Search endpoint hit: " + keyword);
+
         List<Product> products = service.searchProducts(keyword);
         return ResponseEntity.ok(products);
     }
