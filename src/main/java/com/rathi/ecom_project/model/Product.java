@@ -32,7 +32,8 @@ public class Product {
 
     private String imageName;
     private String imageType;
-    @Lob
+
+    @Column(columnDefinition = "BYTEA")
     @JsonIgnore
     private byte[] imageData;
 
