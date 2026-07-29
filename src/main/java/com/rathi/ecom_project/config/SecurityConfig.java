@@ -61,6 +61,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/wishlist/**")
                         .authenticated()
 
+                        .requestMatchers("/api/orders/**")
+                        .authenticated()
+
                         .anyRequest().authenticated()
                 )
 
