@@ -58,14 +58,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/product/**")
                         .hasRole("ADMIN")
 
-                        .requestMatchers(HttpMethod.GET, "/api/wishlist/**")
-                        .hasAnyRole("USER", "ADMIN")
-
-                        .requestMatchers(HttpMethod.POST, "/api/wishlist/**")
-                        .hasAnyRole("USER", "ADMIN")
-
-                        .requestMatchers(HttpMethod.DELETE, "/api/wishlist/**")
-                        .hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/wishlist/**")
+                        .authenticated()
 
                         .anyRequest().authenticated()
                 )

@@ -45,6 +45,7 @@ public class WishlistController {
     })
     @GetMapping
     public List<Wishlist> getWishlist(Authentication authentication) {
+        System.out.println("Authenticated User: " + authentication.getName());
 
         String username = authentication.getName();
 
