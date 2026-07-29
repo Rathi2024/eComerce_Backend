@@ -4,6 +4,7 @@ import com.rathi.ecom_project.model.Product;
 import com.rathi.ecom_project.model.Wishlist;
 import com.rathi.ecom_project.repo.ProductRepo;
 import com.rathi.ecom_project.repo.WishlistRepo;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,7 @@ public class WishlistService {
         return wishlistRepo.findByUsername(username);
     }
 
+    @Transactional
     public void removeFromWishlist(String username, int productId) {
         wishlistRepo.deleteByUsernameAndProductId(username, productId);
     }
