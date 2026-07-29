@@ -29,7 +29,9 @@ public class WishlistController {
     })
     @PostMapping("/{productId}")
     public Wishlist addToWishlist(@PathVariable int productId, Authentication authentication) {
-
+        System.out.println("===== Add Wishlist Controller Hit =====");
+        System.out.println("User: " + authentication.getName());
+        System.out.println("Authorities: " + authentication.getAuthorities());
         String username = authentication.getName();
 
         return wishlistService.addToWishlist(username, productId);
@@ -45,7 +47,9 @@ public class WishlistController {
     })
     @GetMapping
     public List<Wishlist> getWishlist(Authentication authentication) {
-        System.out.println("Authenticated User: " + authentication.getName());
+        System.out.println("===== Wishlist Controller Hit =====");
+        System.out.println("User: " + authentication.getName());
+        System.out.println("Authorities: " + authentication.getAuthorities());
 
         String username = authentication.getName();
 
