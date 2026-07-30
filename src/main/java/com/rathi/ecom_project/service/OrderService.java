@@ -63,4 +63,14 @@ public class OrderService {
 
         return orderRepo.save(order);
     }
-}
+
+    public void deleteOrder(int id) {
+
+        Order order = orderRepo.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Order not found"));
+
+        orderRepo.delete(order);
+    }
+
+    }
