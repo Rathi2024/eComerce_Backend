@@ -18,7 +18,7 @@ public class CorsConfig {
         config.addAllowedOrigin("http://localhost:5173");
 
         // Production frontend (Vercel)
-        config.addAllowedOrigin("https://ecommerce-frontend-rust-two-30.vercel.app");
+        config.addAllowedOrigin("https://myshopsphere.vercel.app");
 
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
