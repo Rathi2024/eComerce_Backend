@@ -40,15 +40,15 @@ public class SecurityConfig {
                                 "/auth/register",
                                 "/auth/login"
                         ).permitAll()
+
+                        // Public Product APIs
+                        .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
+
+                        .requestMatchers(HttpMethod.GET, "/api/product/**").permitAll()
+
                         .requestMatchers(HttpMethod.GET, "/api/product/*/image").permitAll()
 
-                        // Product APIs
-                        .requestMatchers(HttpMethod.GET, "/api/products/**")
-                        .hasAnyRole("USER", "ADMIN")
-
-                        .requestMatchers(HttpMethod.GET, "/api/product/**")
-                        .hasAnyRole("USER", "ADMIN")
-
+                        // Admin Product APIs
                         .requestMatchers(HttpMethod.POST, "/api/product")
                         .hasRole("ADMIN")
 
@@ -58,6 +58,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/product/**")
                         .hasRole("ADMIN")
 
+                        // Protected User APIs
                         .requestMatchers("/api/wishlist/**")
                         .authenticated()
 
